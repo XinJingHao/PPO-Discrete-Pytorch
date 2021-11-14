@@ -4,8 +4,6 @@ This is a **clean and robust Pytorch implementation of PPO on Discrete action sp
 ![avatar](https://github.com/XinJingHao/PPO-Discrete-Pytorch/blob/main/result.jpg)  
 All the experiments are trained with same hyperparameters.
 
-For Pytorch implementation of PPO on Continuous action space, please click [here](https://github.com/XinJingHao/PPO-Continuous-Pytorch)
-
 ## Dependencies
 gym==0.18.3  
 numpy==1.21.2  
@@ -28,3 +26,5 @@ For more details of Hyperparameter Setting, please check 'main.py'
 ### References
 [Proximal Policy Optimization Algorithms](https://arxiv.org/pdf/1707.06347.pdf)  
 [Emergence of Locomotion Behaviours in Rich Environments](https://arxiv.org/pdf/1707.02286.pdf)
+
+### Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao/RL-Algorithms-by-Pytorch).
