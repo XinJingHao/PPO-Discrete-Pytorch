@@ -74,7 +74,8 @@ class PPO_discrete(object):
 
         self.critic = Critic(state_dim, net_width).to(device)
         self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=lr)
-
+        
+        self.s_dim = state_dim
         self.data = []
         self.env_with_Dead = env_with_Dead
         self.gamma = gamma
@@ -171,26 +172,18 @@ class PPO_discrete(object):
                 self.critic_optimizer.step()
         return a_loss.mean(), c_loss, entropy
 
-
-
     def make_batch(self):
-        s_lst, a_lst, r_lst, s_prime_lst, prob_a_lst, done_lst, dw_lst = [], [], [], [], [], [], []
-        for transition in self.data:
-            s, a, r, s_prime, prob_a, done, dw = transition
-
-            s_lst.append(s)
-            a_lst.append([a])  #aware: [a] not a
-            r_lst.append([r])
-            s_prime_lst.append(s_prime)
-            prob_a_lst.append([prob_a])
-            done_lst.append([done])
-            dw_lst.append([dw])
-
+        l = len(self.data)
+        s_lst, a_lst, r_lst, s_prime_lst, prob_a_lst, done_lst, dw_lst = \
+            np.zeros((l,self.s_dim)), np.zeros((l,1)), np.zeros((l,1)), np.zeros((l,self.s_dim)), np.zeros((l,1)), np.zeros((l,1)), np.zeros((l,1))
+            
+        for i,transition in enumerate(self.data):
+            s_lst[i], a_lst[i],r_lst[i] ,s_prime_lst[i] ,prob_a_lst[i] ,done_lst[i] ,dw_lst[i] = transition
             if not self.env_with_Dead:
                 '''Important!!!'''
                 # env_without_DeadAndWin: deltas = r + self.gamma * vs_ - vs
                 # env_with_DeadAndWin: deltas = r + self.gamma * vs_ * (1 - dw) - vs
-                dw_lst = (np.array(dw_lst) * False).tolist()
+                dw_lst *=False
 
             self.data = [] #Clean history trajectory
 
