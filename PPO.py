@@ -179,13 +179,13 @@ class PPO_discrete(object):
             
         for i,transition in enumerate(self.data):
             s_lst[i], a_lst[i],r_lst[i] ,s_prime_lst[i] ,prob_a_lst[i] ,done_lst[i] ,dw_lst[i] = transition
-            if not self.env_with_Dead:
-                '''Important!!!'''
-                # env_without_DeadAndWin: deltas = r + self.gamma * vs_ - vs
-                # env_with_DeadAndWin: deltas = r + self.gamma * vs_ * (1 - dw) - vs
-                dw_lst *=False
+        if not self.env_with_Dead:
+            '''Important!!!'''
+            # env_without_DeadAndWin: deltas = r + self.gamma * vs_ - vs
+            # env_with_DeadAndWin: deltas = r + self.gamma * vs_ * (1 - dw) - vs
+            dw_lst *=False
 
-            self.data = [] #Clean history trajectory
+        self.data = [] #Clean history trajectory
 
         '''list to tensor'''
         with torch.no_grad():
