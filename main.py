@@ -177,6 +177,7 @@ def main():
                 model.save(total_steps)
 
     env.close()
+    eval_env.close()
 
 if __name__ == '__main__':
     main()
