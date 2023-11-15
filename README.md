@@ -1,7 +1,10 @@
 # PPO-Discrete-Pytorch
 This is a **clean and robust Pytorch implementation of PPO on Discrete action space**. Here is the result:  
-  
-![avatar](https://github.com/XinJingHao/PPO-Discrete-Pytorch/blob/main/result.jpg)  
+
+<img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/Render_CVP1.gif" width="90%" height="auto">  | <img src="https://github.com/XinJingHao/DQN-DDQN-Pytorch/blob/main/IMGs/Render%20of%20DDQN.gif" width="90%" height="auto">
+:-----------------------:|:-----------------------:|
+
+<img src="https://github.com/XinJingHao/PPO-Discrete-Pytorch/blob/main/result.jpg" width="95%" height="auto">
 All the experiments are trained with same hyperparameters. **Other RL algorithms by Pytorch can be found [here](https://github.com/XinJingHao/RL-Algorithms-by-Pytorch).**
 
 ## Dependencies
