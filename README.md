@@ -10,27 +10,25 @@ All the experiments are trained with same hyperparameters. **Other RL algorithms
 
 ## Dependencies
 ```python
-gymnasium==0.29.1  
-box2d-py==2.3.5 
+gymnasium==0.29.1
 numpy==1.26.1
 pytorch==2.1.0
-tensorboard==2.15.1
 
 python==3.11.5
 ```
 
 ## How to use my code
 ### Train from scratch
-
 ```bash
 python main.py
 ```
-where the default enviroment is CartPole-v1.  
+where the default enviroment is 'Pendulum'.  
 
 ### Play with trained model
 ```bash
-python main.py --write False --render True --Loadmodel True --ModelIdex 300000
+python main.py --EnvIdex 0 --render True --Loadmodel True --ModelIdex 300000
 ```
+which will render the 'Pendulum'.  
 
 
 ### Change Enviroment
@@ -43,11 +41,22 @@ The --EnvIdex can be set to be 0 and 1, where
 '--EnvIdex 0' for 'CartPole-v1'  
 '--EnvIdex 1' for 'LunarLander-v2'   
 ```
-if you want train on LunarLander-v2, you need to install [box2d-py](https://gymnasium.farama.org/environments/box2d/) first. 
-
+Note: if you want train on LunarLander-v2, you need to install [box2d-py](https://gymnasium.farama.org/environments/box2d/) first. You can install box2d-py via:
+```bash
+pip install gymnasium[box2d]
+```
 
 ### Visualize the training curve
-You can use the [tensorboard](https://pytorch.org/docs/stable/tensorboard.html) to visualize the training curve. History training curve is saved at '\runs'
+You can use the [tensorboard](https://pytorch.org/docs/stable/tensorboard.html) to record anv visualize the training curve. 
+```bash
+# record:
+python main.py --write True
+```
+where the training curves will be saved at '**\runs**', and you can visulize it via:
+```bash
+# visulize:
+tensorboard --logdir runs
+```
 
 ### Hyperparameter Setting
 For more details of Hyperparameter Setting, please check 'main.py'
